@@ -14,6 +14,9 @@ using UIKit;
 using Xamarin;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
+using Microsoft.Azure.Mobile;
+using Microsoft.Azure.Mobile.Analytics;
+using Microsoft.Azure.Mobile.Crashes;
 
 namespace Acquaint.XForms.iOS
 {
@@ -47,7 +50,15 @@ namespace Acquaint.XForms.iOS
 
 			CachedImageRenderer.Init();
 
+            MobileCenter.Configure("7056d0a8-3a01-49e4-8fca-f5eff47839df");
             LoadApplication(new App());
+            bool didAppCrash = Crashes.HasCrashedInLastSession;
+            if (didAppCrash)
+            {
+                Analytics.TrackEvent("App crashed", new System.Collections.Generic.Dictionary<string, string> { { "had crash", "true" } });
+            }
+            Analytics.TrackEvent("App started", new System.Collections.Generic.Dictionary<string, string> { { "Startup", "Finished loading" } });
+            Analytics.TrackEvent("App started2", null);
 
             ConfigureTheming();
 
