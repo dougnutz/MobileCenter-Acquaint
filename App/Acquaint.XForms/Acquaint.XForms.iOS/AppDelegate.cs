@@ -8,7 +8,6 @@ using Autofac;
 using Autofac.Extras.CommonServiceLocator;
 using FFImageLoading.Forms.Touch;
 using Foundation;
-using HockeyApp.iOS;
 using Microsoft.Practices.ServiceLocation;
 using UIKit;
 using Xamarin;
@@ -28,10 +27,6 @@ namespace Acquaint.XForms.iOS
 
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-			var manager = BITHockeyManager.SharedHockeyManager;
-			manager.Configure(Settings.HockeyAppId);
-			manager.StartManager();
-
 			RegisterDependencies();
 
 			Settings.OnDataPartitionPhraseChanged += (sender, e) => {
