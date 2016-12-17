@@ -28,7 +28,7 @@ namespace Acquaint.XForms
 				// by virtue of the ObservableObject type that the Acquaint model inherits from.
 				Acquaintance = Mapper.Map<Acquaintance>(acquaintance);
 			}
-            Microsoft.Azure.Mobile.Analytics.Analytics.TrackEvent("AcquaintanceEdit", new System.Collections.Generic.Dictionary<string, string> { { "Acquaintance", acquaintance.DisplayName } });
+            Microsoft.Azure.Mobile.Analytics.Analytics.TrackEvent("AcquaintanceEdit", new System.Collections.Generic.Dictionary<string, string> { { "Acquaintance", acquaintance?.DisplayName} });
         }
 
 		public Acquaintance Acquaintance { private set; get; }
