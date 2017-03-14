@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StoreAssociation xmlns="http://schemas.microsoft.com/appx/2010/storeassociation">
-  <Publisher>CN=66980121-9AD0-4799-8E92-0D475D08BFB6</Publisher>
-  <PublisherDisplayName>Joseph Sauve</PublisherDisplayName>
+  <Publisher>CN=5B1D05A5-A51F-4BAC-8B44-E3A1BD2EDB13</Publisher>
+  <PublisherDisplayName>Green Olive</PublisherDisplayName>
   <GeneratePackageHash>http://www.w3.org/2001/04/xmlenc#sha256</GeneratePackageHash>
   <SupportedLocales>
     <Language Code="af" InMinimumRequirementSet="true" />
@@ -358,11 +358,11 @@
     <Language Code="zu-za" InMinimumRequirementSet="true" />
   </SupportedLocales>
   <ProductReservedInfo>
-    <MainPackageIdentityName>34027JosephSauve.Acquaint.XForms</MainPackageIdentityName>
+    <MainPackageIdentityName>30595GreenOlive.Aquaint</MainPackageIdentityName>
     <ReservedNames>
-      <ReservedName>Acquaint.XForms</ReservedName>
+      <ReservedName>Aquaint</ReservedName>
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames />
-  <PackageInfoList LandingUrl="https://dev.windows.com/dashboard/Application?appId=9NBLGGH4RF2L" />
+  <PackageInfoList LandingUrl="https://developer.microsoft.com/dashboard/Application?appId=9P0BTPBL8W4D" />
 </StoreAssociation>

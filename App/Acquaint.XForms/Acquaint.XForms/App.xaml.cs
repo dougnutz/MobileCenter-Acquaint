@@ -43,13 +43,28 @@ namespace Acquaint.XForms
                 MainPage = navPage;
 			}
             MobileCenter.LogLevel = LogLevel.Verbose;
-            MobileCenter.Start(typeof(Analytics), typeof(Crashes));
+            MobileCenter.Start("android=34d5ed40-4ff1-4db4-9ef6-0eefbf97e8ab;uwp=34d5ed40-4ff1-4db4-9ef6-0eefbf97e8ab;ios=7056d0a8-3a01-49e4-8fca-f5eff47839df", typeof(Analytics),typeof(Crashes));
+            try
+            {
+                WerRegisterCustomMetadata("VSMCAppSecret", "34d5ed40-4ff1-4db4-9ef6-0eefbf97e8ab");
+                Analytics.TrackEvent("CrashMetadataSet");
+            }
+            catch (System.Exception e)
+            {
+                Analytics.TrackEvent("crashInit:" + e.Message.ToString());
+            }
+            Analytics.TrackEvent("CrashEnabled:"+Crashes.Enabled.ToString());
+            Analytics.TrackEvent("HasCrashedInLastSession:" + Crashes.HasCrashedInLastSession.ToString());
+
         }
 
-		/// <summary>
-		/// Subscribes to messages for displaying alerts.
-		/// </summary>
-		static void SubscribeToDisplayAlertMessages()
+        [System.Runtime.InteropServices.DllImport("kernel32.dll", CharSet = System.Runtime.InteropServices.CharSet.Unicode, ExactSpelling = true, ThrowOnUnmappableChar = false)]
+        private static extern int WerRegisterCustomMetadata([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.LPWStr)]string key, [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.LPWStr)]string value);
+
+        /// <summary>
+        /// Subscribes to messages for displaying alerts.
+        /// </summary>
+        static void SubscribeToDisplayAlertMessages()
 		{
 			MessagingService.Current.Subscribe<MessagingServiceAlert>(MessageKeys.DisplayAlert, async (service, info) => {
 				var task = Current?.MainPage?.DisplayAlert(info.Title, info.Message, info.Cancel);

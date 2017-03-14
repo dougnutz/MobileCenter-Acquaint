@@ -49,7 +49,7 @@ namespace Acquaint.XForms.Droid
 
 			FormsMaps.Init (this, bundle);
 
-            MobileCenter.Configure("34d5ed40-4ff1-4db4-9ef6-0eefbf97e8ab");        
+        
             LoadApplication (new App ());
             bool didAppCrash = Crashes.HasCrashedInLastSession;
             if (didAppCrash)

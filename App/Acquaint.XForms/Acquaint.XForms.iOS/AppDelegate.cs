@@ -45,7 +45,6 @@ namespace Acquaint.XForms.iOS
 
 			CachedImageRenderer.Init();
 
-            MobileCenter.Configure("7056d0a8-3a01-49e4-8fca-f5eff47839df");
             LoadApplication(new App());
             bool didAppCrash = Crashes.HasCrashedInLastSession;
             if (didAppCrash)
