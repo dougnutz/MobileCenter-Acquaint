@@ -148,13 +148,19 @@ namespace Acquaint.XForms
             get
             {
                 return _CrashIt ??
-                    (_CrashIt = new Command(async () => await ExecuteCrash()));
+                    (_CrashIt = new Command( () =>  ExecuteCrash().RunSynchronously()));
             }
         }
 
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]
         Task ExecuteCrash()
         {
-            throw new NotImplementedException();
+            throw new TestException();
+        }
+
+        public class TestException: Exception
+        {
+            public Guid Id => Guid.NewGuid();
         }
     }
 }
