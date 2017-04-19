@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using FormsToolkit;
 using Xamarin.Forms;
-
+ 
 namespace Acquaint.XForms
 {
 	public partial class SettingsPage : ContentPage

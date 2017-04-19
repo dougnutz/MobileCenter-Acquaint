@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?> 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Acquaint.XForms" x:Class="Acquaint.XForms.SettingsPage" Title="Settings">
 	<ContentPage.ToolbarItems>
 		<ToolbarItem Icon="cancel.png" Text="Cancel" Command="{Binding CancelCommand}" />
@@ -16,10 +16,10 @@
 							<TableSection Title="Data Partition Phrase (required)">
 								<ViewCell>
 									<StackLayout>
-										<Entry x:Name="DataPartitionPhraseEntry" Text="{Binding DataPartitionPhrase}" Placeholder="Enter a unique phrase" Keyboard="Text">
-											<Entry.FontSize>
+										<Entry x:Name="DataPartitionPhraseEntry" FontSize="20" Text="{Binding DataPartitionPhrase}" Placeholder="Enter a unique phrase" Keyboard="Text">
+											<!--<Entry.FontSize>
 												<OnPlatform x:TypeArguments="Font" iOS="Micro" />
-											</Entry.FontSize>
+											</Entry.FontSize>-->
 										</Entry>
 									</StackLayout>
 								</ViewCell>
@@ -27,10 +27,10 @@
 							<TableSection Title="Backend URL (required valid URL)">
 								<ViewCell>
 									<StackLayout>
-										<Entry x:Name="BackendServiceUrlEntry" Text="{Binding AzureAppServiceUrl}" Placeholder="ex: http://yourservice.azurewebsites.net" Keyboard="Text">
-											<Entry.FontSize>
+										<Entry x:Name="BackendServiceUrlEntry" FontSize="20" Text="{Binding AzureAppServiceUrl}" Placeholder="ex: http://yourservice.azurewebsites.net" Keyboard="Text">
+											<!--<Entry.FontSize>
 												<OnPlatform x:TypeArguments="Font" iOS="Micro" />
-											</Entry.FontSize>
+											</Entry.FontSize>-->
 										</Entry>
 									</StackLayout>
 								</ViewCell>
@@ -38,10 +38,10 @@
 							<TableSection Title="Image Cache Duration (in hours)">
 								<ViewCell>
 									<StackLayout>
-										<Entry Text="{Binding ImageCacheDurationHours}" Keyboard="Numeric">
-											<Entry.FontSize>
+										<Entry Text="{Binding ImageCacheDurationHours}" FontSize="20" Keyboard="Numeric">
+											<!--<Entry.FontSize>
 												<OnPlatform x:TypeArguments="Font" iOS="Micro" />
-											</Entry.FontSize>
+											</Entry.FontSize>-->
 										</Entry>
 									</StackLayout>
 								</ViewCell>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="30595GreenOlive.Aquaint" Publisher="CN=5B1D05A5-A51F-4BAC-8B44-E3A1BD2EDB13" Version="1.8.28.0" />
+  <Identity Name="30595GreenOlive.Aquaint" Publisher="CN=5B1D05A5-A51F-4BAC-8B44-E3A1BD2EDB13" Version="1.8.34.0" />
   <mp:PhoneIdentity PhoneProductId="0c771ca9-b454-4d49-abad-5a3ece1eb5f4" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Aquaint</DisplayName>

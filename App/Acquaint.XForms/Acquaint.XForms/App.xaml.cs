@@ -28,7 +28,7 @@ namespace Acquaint.XForms
 
         public App()
 		{
-			InitializeComponent();
+            InitializeComponent();
 
 			SubscribeToDisplayAlertMessages();
 

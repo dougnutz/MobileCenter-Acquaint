@@ -1,6 +1,2 @@
-MainPackage=D:\src\MobileCenter-Acquaint\App\Acquaint.XForms\Acquaint.XForms.UWP\bin\x86\Release\Acquaint.XForms.UWP_1.8.28.0_x86.appx
-SymbolPackage=D:\src\MobileCenter-Acquaint\App\Acquaint.XForms\Acquaint.XForms.UWP\AppPackages\Acquaint.XForms.UWP_1.8.28.0_Test\Acquaint.XForms.UWP_1.8.28.0_x86.appxsym
-ResourcePack=D:\src\MobileCenter-Acquaint\App\Acquaint.XForms\Acquaint.XForms.UWP\bin\x86\Release\Acquaint.XForms.UWP_1.8.28.0_scale-100.appx
-ResourcePack=D:\src\MobileCenter-Acquaint\App\Acquaint.XForms\Acquaint.XForms.UWP\bin\x86\Release\Acquaint.XForms.UWP_1.8.28.0_scale-125.appx
-ResourcePack=D:\src\MobileCenter-Acquaint\App\Acquaint.XForms\Acquaint.XForms.UWP\bin\x86\Release\Acquaint.XForms.UWP_1.8.28.0_scale-150.appx
-ResourcePack=D:\src\MobileCenter-Acquaint\App\Acquaint.XForms\Acquaint.XForms.UWP\bin\x86\Release\Acquaint.XForms.UWP_1.8.28.0_scale-400.appx
+MainPackage=D:\src\MobileCenter-Acquaint\App\Acquaint.XForms\Acquaint.XForms.UWP\bin\x86\Release\Acquaint.XForms.UWP_1.8.34.0_x86.appx
+SymbolPackage=D:\src\MobileCenter-Acquaint\App\Acquaint.XForms\Acquaint.XForms.UWP\AppPackages\Acquaint.XForms.UWP_1.8.34.0_Test\Acquaint.XForms.UWP_1.8.34.0_x86.appxsym

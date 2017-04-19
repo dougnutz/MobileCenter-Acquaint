@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Acquaint.Util;
 using Xamarin.Forms;
 
-namespace Acquaint.XForms
+namespace Acquaint.XForms 
 {
     public partial class SetupPage : ContentPage
     {
