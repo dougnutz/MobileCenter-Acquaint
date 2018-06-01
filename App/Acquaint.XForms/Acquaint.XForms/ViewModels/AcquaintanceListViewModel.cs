@@ -11,6 +11,8 @@ using Xamarin.Forms;
 
 namespace Acquaint.XForms
 {
+    using Microsoft.AppCenter.Analytics;
+
     public class AcquaintanceListViewModel : BaseNavigationViewModel
     {
         public AcquaintanceListViewModel()
@@ -77,7 +79,7 @@ namespace Acquaint.XForms
             if (Acquaintances.Count < 1 || !Settings.DataIsSeeded || Settings.ClearImageCacheIsRequested)
                 await FetchAcquaintances();
 
-            Microsoft.Azure.Mobile.Analytics.Analytics.TrackEvent("AcquaintanceList", new System.Collections.Generic.Dictionary<string, string> { { "Acquaintance count", Acquaintances?.Count.ToString() } });
+            Analytics.TrackEvent("AcquaintanceList", new System.Collections.Generic.Dictionary<string, string> { { "Acquaintance count", Acquaintances?.Count.ToString() } });
 
             LoadAcquaintancesCommand.ChangeCanExecute();
         }

@@ -7,7 +7,9 @@ using Acquaint.Models;
 
 namespace Acquaint.XForms
 {
-	public class AcquaintanceEditViewModel : BaseNavigationViewModel
+    using Microsoft.AppCenter.Analytics;
+
+    public class AcquaintanceEditViewModel : BaseNavigationViewModel
 	{
 		bool _IsNewAcquaintance;
 
@@ -28,7 +30,7 @@ namespace Acquaint.XForms
 				// by virtue of the ObservableObject type that the Acquaint model inherits from.
 				Acquaintance = Mapper.Map<Acquaintance>(acquaintance);
 			}
-            Microsoft.Azure.Mobile.Analytics.Analytics.TrackEvent("AcquaintanceEdit", new System.Collections.Generic.Dictionary<string, string> { { "Acquaintance", acquaintance?.DisplayName} });
+            Analytics.TrackEvent("AcquaintanceEdit", new System.Collections.Generic.Dictionary<string, string> { { "Acquaintance", acquaintance?.DisplayName} });
         }
 
 		public Acquaintance Acquaintance { private set; get; }

@@ -13,7 +13,9 @@ using Xamarin.Forms.Maps;
 
 namespace Acquaint.XForms
 {
-	public class AcquaintanceDetailViewModel : BaseNavigationViewModel
+    using Microsoft.AppCenter.Analytics;
+
+    public class AcquaintanceDetailViewModel : BaseNavigationViewModel
     {
 		public AcquaintanceDetailViewModel(Acquaintance acquaintance)
 		{
@@ -24,7 +26,7 @@ namespace Acquaint.XForms
 			Acquaintance = acquaintance;
 
 			SubscribeToSaveAcquaintanceMessages();
-            Microsoft.Azure.Mobile.Analytics.Analytics.TrackEvent("AcquaintanceDetail", new System.Collections.Generic.Dictionary<string, string> { { "Acquaintance", acquaintance.DisplayName } });
+            Analytics.TrackEvent("AcquaintanceDetail", new System.Collections.Generic.Dictionary<string, string> { { "Acquaintance", acquaintance.DisplayName } });
         }
 
 		public Acquaintance Acquaintance { private set; get; }

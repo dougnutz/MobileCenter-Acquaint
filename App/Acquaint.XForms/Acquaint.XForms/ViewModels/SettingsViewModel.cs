@@ -8,7 +8,9 @@ using Xamarin.Forms;
 
 namespace Acquaint.XForms
 {
-	public class SettingsViewModel : BaseNavigationViewModel
+    using Microsoft.AppCenter.Analytics;
+
+    public class SettingsViewModel : BaseNavigationViewModel
 	{
 		public string AzureAppServiceUrl { get; set; }
 		public string DataPartitionPhrase { get; set; }
@@ -37,7 +39,7 @@ namespace Acquaint.XForms
 			AzureAppServiceUrl = Settings.AzureAppServiceUrl;
 			DataPartitionPhrase = Settings.DataPartitionPhrase;
 			ImageCacheDurationHours = Settings.ImageCacheDurationHours;
-            Microsoft.Azure.Mobile.Analytics.Analytics.TrackEvent("SettingsPage", null);
+            Analytics.TrackEvent("SettingsPage", null);
         }
 
 		Command _CancelCommand;

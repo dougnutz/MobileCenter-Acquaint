@@ -6,6 +6,8 @@ using Xamarin.Forms;
 
 namespace Acquaint.XForms 
 {
+    using Microsoft.AppCenter.Analytics;
+
     public partial class SetupPage : ContentPage
     {
         public SetupPage()
@@ -13,7 +15,7 @@ namespace Acquaint.XForms
             BindingContext = this; // No need for all the ceremony of a viewmodel in this case. Just bind to ourself.
 
             InitializeComponent();
-            Microsoft.Azure.Mobile.Analytics.Analytics.TrackEvent("SetUpPage", null);
+            Analytics.TrackEvent("SetUpPage", null);
         }
 
         Command _ContinueCommand;

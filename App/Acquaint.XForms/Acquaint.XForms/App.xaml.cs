@@ -1,9 +1,6 @@
 ﻿using FormsToolkit;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Microsoft.Azure.Mobile;
-using Microsoft.Azure.Mobile.Analytics;
-using Microsoft.Azure.Mobile.Crashes;
 using System;
 using System.Runtime.InteropServices;
 
@@ -11,8 +8,12 @@ using System.Runtime.InteropServices;
 
 namespace Acquaint.XForms
 {
+    using Microsoft.AppCenter;
+    using Microsoft.AppCenter.Analytics;
+    using Microsoft.AppCenter.Crashes;
+
     public partial class App : Application
-	{
+    {
         private const string WatsonKey = "VSMCAppSecret";
 
         [DllImport("kernel32.dll", ExactSpelling = true)]
@@ -27,38 +28,38 @@ namespace Acquaint.XForms
         private delegate int RegisterCustomMetadataDelegate([MarshalAs(UnmanagedType.LPWStr)]string key, [MarshalAs(UnmanagedType.LPWStr)]string value);
 
         public App()
-		{
+        {
             InitializeComponent();
 
-			SubscribeToDisplayAlertMessages();
+            SubscribeToDisplayAlertMessages();
 
-			// The navigation logic startup needs to diverge per platform in order to meet the UX design requirements
-			if (Xamarin.Forms.Device.OS == TargetPlatform.Android)
-			{
-				// if this is an Android device, set the MainPage to a new SplashPage
-				MainPage = new SplashPage();
-			}
-			else
-			{
-				// create a new NavigationPage, with a new AcquaintanceListPage set as the Root
-				var navPage =
-					new NavigationPage(
-						new AcquaintanceListPage()
-						{
-							BindingContext = new AcquaintanceListViewModel(),
-							Title = "Acquaintances"
-						})
-					{
-						BarBackgroundColor = Color.FromHex("547799")
-					};
+            // The navigation logic startup needs to diverge per platform in order to meet the UX design requirements
+            if (Xamarin.Forms.Device.OS == TargetPlatform.Android)
+            {
+                // if this is an Android device, set the MainPage to a new SplashPage
+                MainPage = new SplashPage();
+            }
+            else
+            {
+                // create a new NavigationPage, with a new AcquaintanceListPage set as the Root
+                var navPage =
+                    new NavigationPage(
+                        new AcquaintanceListPage()
+                        {
+                            BindingContext = new AcquaintanceListViewModel(),
+                            Title = "Acquaintances"
+                        })
+                    {
+                        BarBackgroundColor = Color.FromHex("547799")
+                    };
 
-			    navPage.BarTextColor = Color.White;
+                navPage.BarTextColor = Color.White;
 
                 // set the MainPage of the app to the navPage
                 MainPage = navPage;
-			}
-            MobileCenter.LogLevel = LogLevel.Verbose;
-            MobileCenter.Start("android=34d5ed40-4ff1-4db4-9ef6-0eefbf97e8ab;uwp=34d5ed40-4ff1-4db4-9ef6-0eefbf97e8ab;ios=7056d0a8-3a01-49e4-8fca-f5eff47839df", typeof(Analytics),typeof(Crashes));
+            }
+            AppCenter.LogLevel = LogLevel.Verbose;
+            AppCenter.Start("android=34d5ed40-4ff1-4db4-9ef6-0eefbf97e8ab;uwp=34d5ed40-4ff1-4db4-9ef6-0eefbf97e8ab;ios=7056d0a8-3a01-49e4-8fca-f5eff47839df", typeof(Analytics), typeof(Crashes));
 
 
             var handle = LoadPackagedLibrary("kernel32.dll");
@@ -86,7 +87,7 @@ namespace Acquaint.XForms
                 registrationMethod.DynamicInvoke(WatsonKey, "34d5ed40-4ff1-4db4-9ef6-0eefbf97e8ab");
                 Analytics.TrackEvent("CrashMetadataSet");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Analytics.TrackEvent("crashInit:" + e.Message.ToString());
             }
@@ -105,7 +106,7 @@ namespace Acquaint.XForms
             //{
             //    Analytics.TrackEvent("crashInit:" + e.Message.ToString());
             //}
-            Analytics.TrackEvent("CrashEnabled:"+Crashes.Enabled.ToString());
+            Analytics.TrackEvent("CrashEnabled:" + Crashes.IsEnabledAsync().Result);
 
         }
 
@@ -116,25 +117,27 @@ namespace Acquaint.XForms
         /// Subscribes to messages for displaying alerts.
         /// </summary>
         static void SubscribeToDisplayAlertMessages()
-		{
-			MessagingService.Current.Subscribe<MessagingServiceAlert>(MessageKeys.DisplayAlert, async (service, info) => {
-				var task = Current?.MainPage?.DisplayAlert(info.Title, info.Message, info.Cancel);
-				if (task != null)
-				{
-					await task;
-					info?.OnCompleted?.Invoke();
-				}
-			});
+        {
+            MessagingService.Current.Subscribe<MessagingServiceAlert>(MessageKeys.DisplayAlert, async (service, info) =>
+            {
+                var task = Current?.MainPage?.DisplayAlert(info.Title, info.Message, info.Cancel);
+                if (task != null)
+                {
+                    await task;
+                    info?.OnCompleted?.Invoke();
+                }
+            });
 
-			MessagingService.Current.Subscribe<MessagingServiceQuestion>(MessageKeys.DisplayQuestion, async (service, info) => {
-				var task = Current?.MainPage?.DisplayAlert(info.Title, info.Question, info.Positive, info.Negative);
-				if (task != null)
-				{
-					var result = await task;
-					info?.OnCompleted?.Invoke(result);
-				}
-			});
-		}
-	}
+            MessagingService.Current.Subscribe<MessagingServiceQuestion>(MessageKeys.DisplayQuestion, async (service, info) =>
+            {
+                var task = Current?.MainPage?.DisplayAlert(info.Title, info.Question, info.Positive, info.Negative);
+                if (task != null)
+                {
+                    var result = await task;
+                    info?.OnCompleted?.Invoke(result);
+                }
+            });
+        }
+    }
 }
 
